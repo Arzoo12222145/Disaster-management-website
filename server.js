@@ -103,11 +103,12 @@ app.get('/logout', (req, res) => {
   });
 });
 
-app.post('/submit-medical-aid-request', async (req, res) => {
+app.post('/submit-medical-aid-request', upload.none(),  async (req, res) => {
   try {
     const { name, contact, location, type, details } = req.body;
+    console.log(req.body);
 
-    const newUser = new UserModel({
+    const medicalReq = new UserModel({
       name: name,
       contact: contact,
       location: location,
@@ -115,7 +116,7 @@ app.post('/submit-medical-aid-request', async (req, res) => {
       details: details
     });
 
-    await newUser.save();
+    await medicalReq.save();
     res.redirect('/struct.html?status=success');
   } catch (err) {
     console.error('Error submitting medical aid request:', err);
@@ -123,9 +124,11 @@ app.post('/submit-medical-aid-request', async (req, res) => {
   }
 });
 
-app.post('/submit-transport-aid-request', async (req, res) => {
+
+app.post('/submit-transport-aid-request', upload.none(),async (req, res) => {
   try {
     const { name, contact, location, type, details } = req.body;
+    console.log(req.body);
 
     const newAid = new TransportAidRequest({
       name: name,
@@ -143,9 +146,10 @@ app.post('/submit-transport-aid-request', async (req, res) => {
   }
 });
 
-app.post('/volunteering', async (req, res) => {
+app.post('/volunteering', upload.none(), async (req, res) => {
   try {
     const { name, location, disastertype, numpeople, severity } = req.body;
+    console.log(req.body);
 
     const newDisaster = new DisasterUser({
       name: name,
@@ -163,9 +167,11 @@ app.post('/volunteering', async (req, res) => {
   }
 });
 
+
 // API route to fetch all requests
-app.get('/api/requests', async (req, res) => {
+app.get('/api/requests',async (req, res) => {
   try {
+    // Fetch data from MongoDB collections
     const medicalAidRequests = await UserModel.find();
     const transportAidRequests = await TransportAidRequest.find();
     const volunteeringRequests = await DisasterUser.find();
@@ -180,6 +186,7 @@ app.get('/api/requests', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch requests' });
   }
 });
+
 
 // Serve HTML pages with authentication
 app.get('/requests.html', (req, res) => {
