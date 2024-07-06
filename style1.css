@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d8cfc4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+nav a {
+    margin: 0 10px;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #4f4032;
+    color: white;
+    padding: 20px;
+}
+
+.header-logo img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.header-title h1 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    background-color: #3b3226;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #261e14;
+}
+
+main {
+    padding: 20px;
+}
+
+.information {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.information h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.button {
+    background-color: #4f4032;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #261e14;
+}
+
+.news {
+    text-align: center;
+}
+
+.news h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.news .map {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 20px;
+}
+
+

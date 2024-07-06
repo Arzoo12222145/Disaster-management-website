@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            color: #333;
+        }
+        .quote-section {
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(209, 231, 221, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .quote-section p {
+            font-size: 36px;
+            line-height: 1.5;
+            color: #0c5460;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; 
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 20px);
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 15px 20px;
+            margin-top: 30px;
+            background-color: #28a745;
+            border: .2rem solid rgb(11, 189, 11);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .quote-section p {
+                font-size: 28px;
+            }
+            .form-group {
+                flex: 1 1 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quote-section {
+                height: 25vh;
+            }
+            .quote-section p {
+                font-size: 24px;
+            }
+            .container {
+                padding: 20px;
+            }
+            button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-section">
+        <p>"A helping hand can be a ray of sunshine in a cloudy world"</p>
+    </div>
+    <div class="container">
+        <form action="/volunteering" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="disaster-type">Disaster Type:</label>
+                <select id="disaster-type" name="disastertype" required>
+                    <option value="earthquake">Earthquake</option>
+                    <option value="flood">Flood</option>
+                    <option value="fire">Fire</option>
+                    <option value="hurricane">Hurricane</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="num-people">Number of People Around You:</label>
+                <input type="number" id="num-people" name="numpeople" required>
+            </div>
+            <div class="form-group">
+                <label for="severity">Severity:</label>
+                <select id="severity" name="severity" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+    <script>
+        // Check if the URL contains 'status=success' and display an alert
+        if (new URLSearchParams(window.location.search).get('status') === 'success') {
+          alert('Volunteer successfully Registered!');
+        }
+      </script>
+</body>
+</html>

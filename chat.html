@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room - From The Grounds Up</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        #messages li {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #chat-form {
+            display: flex;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #chat-form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="logo.png" alt="Innovative Brains Logo">
+        </div>
+        <div class="header-title">
+            <h1>FROM THE GROUNDS UP - CROWD SOURCED DISASTER MANAGEMENT</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="struct.html">Medical Aid</a></li>
+            <li><a href="transportaid.html">Transport Aid</a></li>
+            <li><a href="bla.html">Volunteering</a></li>
+            <li><a href="#live-map">Live Map</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#weather-forecast">Weather Forecast</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Chatbox Section -->
+        <div id="chat-container">
+            <h2>Chat Room</h2>
+            <ul id="messages"></ul>
+            <form id="chat-form" action="">
+                <input id="message-input" autocomplete="off" placeholder="Type your message here..." /><button>Send</button>
+            </form>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+
+            const form = document.getElementById('chat-form');
+            const input = document.getElementById('message-input');
+            const messages = document.getElementById('messages');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                }
+            });
+
+            socket.on('chat message', (msg) => {
+                const item = document.createElement('li');
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        </script>
+
+        <script src="scripts.js"></script>
+    </main>
+</body>
+</html>

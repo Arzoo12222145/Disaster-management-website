@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Aid</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body class="transport-aid">
+    <header class="transport-aid-header">
+        <h1>Transport Aid Assistance</h1>
+    </header>
+
+    <main>
+        <section class="information">
+            <h2>About Transport Aid</h2>
+            <p>In disaster situations, transport aid is crucial for evacuations, delivery of supplies, and emergency responses. Here, you can request transport assistance, report transport issues, and find information about transport resources available in your area.</p>
+        </section>
+
+        <section class="request-form transport-aid-form">
+            <h2>Request Transport Aid</h2>
+            <form action="/submit-transport-aid-request" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="type">Type of Transport Needed:</label>
+                <select id="type" name="type" required>
+                    <option value="evacuation">Evacuation</option>
+                    <option value="supply-delivery">Supply Delivery</option>
+                    <option value="emergency-transport">Emergency Transport</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" rows="4" required></textarea>
+
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Disaster Management. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        // Check if the URL contains 'status=success' and display an alert
+        if (new URLSearchParams(window.location.search).get('status') === 'success') {
+          alert('Transport-aid request submitted successfully!');
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* Body and Font */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #ba1919f5;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Information Section */
+.information {
+    margin-bottom: 20px;
+}
+
+.information h2 {
+    margin-bottom: 10px;
+}
+
+/* Form Section */
+.request-form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-form h2 {
+    margin-bottom: 15px;
+}
+
+.request-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.request-form button {
+    background-color: #093c1fc5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.request-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+body.transport-aid{
+    background-color: #e0f7fa;
+}
+header.transport-aid-header{
+    background-color: #004d40;
+}
+
+-.request-form.transport-aid-form{
+    background: #ffffff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+
+}
+
+.request-form.transport-aid-form button{
+    background-color: #004d40;
+}
+
+.request-form.transport-aid-form button:hover{
+    background-color: #00332e;
+}

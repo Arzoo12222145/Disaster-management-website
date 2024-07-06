@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Aid</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <header>
+        <h1>Medical Aid Assistance</h1>
+    </header>
+
+    <main>
+        <section class="information">
+            <h2>About Medical Aid</h2>
+            <p>During a disaster, medical aid is critical. Here, you can request medical assistance, report medical emergencies, and find essential information about medical resources available in your area.</p>
+        </section>
+
+        <section class="request-form">
+            <h2>Request Medical Aid</h2>
+            <form action="/submit-medical-aid-request" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+            
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            
+                <label for="type">Type of Aid Needed:</label>
+                <select id="type" name="type" required>
+                    <option value="first-aid">First Aid</option>
+                    <option value="emergency">Emergency Care</option>
+                    <option value="medication">Medication</option>
+                    <option value="other">Other</option>
+                </select>
+            
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" rows="4" required></textarea>
+            
+                <button type="submit">Submit Request</button>
+            </form>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Disaster Management. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        // Check if the URL contains 'status=success' and display an alert
+        if (new URLSearchParams(window.location.search).get('status') === 'success') {
+          alert('Medical aid request submitted successfully!');
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Requests</title>
+  <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+  <h1>Requests Received</h1>
+  
+  <!-- Logout Button -->
+  <button id="logout-button">Logout</button>
+
+  <div id="medical-aid-requests">
+    <h2>Medical Aid Requests</h2>
+    <ul id="medical-aid-list"></ul>
+  </div>
+
+  <div id="transport-aid-requests">
+    <h2>Transport Aid Requests</h2>
+    <ul id="transport-aid-list"></ul>
+  </div>
+
+  <div id="volunteering-requests">
+    <h2>Volunteering Requests</h2>
+    <ul id="volunteering-list"></ul>
+  </div>
+
+  <script>
+    // Fetch data from API endpoint
+    fetch('/api/requests')
+      .then(response => response.json())
+      .then(data => {
+        const medicalAidList = document.getElementById('medical-aid-list');
+        const transportAidList = document.getElementById('transport-aid-list');
+        const volunteeringList = document.getElementById('volunteering-list');
+
+        // Display medical aid requests
+        data.medicalAidRequests.forEach(request => {
+          const li = document.createElement('li');
+          li.textContent = `${request.name} - ${request.location} - ${request.details}`;
+          medicalAidList.appendChild(li);
+        });
+
+        // Display transport aid requests
+        data.transportAidRequests.forEach(request => {
+          const li = document.createElement('li');
+          li.textContent = `${request.name} - ${request.location} - ${request.details}`;
+          transportAidList.appendChild(li);
+        });
+
+        // Display volunteering requests
+        data.volunteeringRequests.forEach(request => {
+          const li = document.createElement('li');
+          li.textContent = `${request.name} - ${request.location} - ${request.disastertype}`;
+          volunteeringList.appendChild(li);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+    // Logout button functionality
+    document.getElementById('logout-button').addEventListener('click', () => {
+      fetch('/logout', {
+        method: 'GET',
+        credentials: 'same-origin'
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/login';
+        } else {
+          console.error('Failed to log out');
+        }
+      })
+      .catch(error => console.error('Error logging out:', error));
+    });
+  </script>
+</body>
+</html>
